@@ -92,9 +92,41 @@ Users.belongsTo(Levels, {
   foreignKey: "levelId"
 });
 
+class Vacation extends Model {}
+Vacation.init({
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+    allowNull: false
+  },
+  userId: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  fromDate: {
+    type: Sequelize.DATE,
+    allowNull: false
+  },
+  toDate: {
+    type: Sequelize.DATE,
+    allowNull: false
+  },
+  createdAt: {
+    type: Sequelize.DATE,
+  },
+  updatedAt: {
+    type: Sequelize.DATE,
+  }
+}, {
+  sequelize,
+  modelName: "vacation"
+});
+
 module.exports = {
   Sequelize,
   Users,
   Levels,
+  Vacation,
   Op
 };
